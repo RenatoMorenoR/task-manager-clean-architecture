@@ -1,0 +1,17 @@
+/Users/rmoreno/Code/Seglares/Interviews/task-manager-clean-architecture/backend/TaskManager.Infrastructure/bin/Debug/net8.0/TaskManager.Infrastructure.deps.json
+/Users/rmoreno/Code/Seglares/Interviews/task-manager-clean-architecture/backend/TaskManager.Infrastructure/bin/Debug/net8.0/TaskManager.Infrastructure.dll
+/Users/rmoreno/Code/Seglares/Interviews/task-manager-clean-architecture/backend/TaskManager.Infrastructure/bin/Debug/net8.0/TaskManager.Infrastructure.pdb
+/Users/rmoreno/Code/Seglares/Interviews/task-manager-clean-architecture/backend/TaskManager.Infrastructure/bin/Debug/net8.0/TaskManager.Application.dll
+/Users/rmoreno/Code/Seglares/Interviews/task-manager-clean-architecture/backend/TaskManager.Infrastructure/bin/Debug/net8.0/TaskManager.Domain.dll
+/Users/rmoreno/Code/Seglares/Interviews/task-manager-clean-architecture/backend/TaskManager.Infrastructure/bin/Debug/net8.0/TaskManager.Application.pdb
+/Users/rmoreno/Code/Seglares/Interviews/task-manager-clean-architecture/backend/TaskManager.Infrastructure/bin/Debug/net8.0/TaskManager.Domain.pdb
+/Users/rmoreno/Code/Seglares/Interviews/task-manager-clean-architecture/backend/TaskManager.Infrastructure/obj/Debug/net8.0/TaskManager.Infrastructure.csproj.AssemblyReference.cache
+/Users/rmoreno/Code/Seglares/Interviews/task-manager-clean-architecture/backend/TaskManager.Infrastructure/obj/Debug/net8.0/TaskManager.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+/Users/rmoreno/Code/Seglares/Interviews/task-manager-clean-architecture/backend/TaskManager.Infrastructure/obj/Debug/net8.0/TaskManager.Infrastructure.AssemblyInfoInputs.cache
+/Users/rmoreno/Code/Seglares/Interviews/task-manager-clean-architecture/backend/TaskManager.Infrastructure/obj/Debug/net8.0/TaskManager.Infrastructure.AssemblyInfo.cs
+/Users/rmoreno/Code/Seglares/Interviews/task-manager-clean-architecture/backend/TaskManager.Infrastructure/obj/Debug/net8.0/TaskManager.Infrastructure.csproj.CoreCompileInputs.cache
+/Users/rmoreno/Code/Seglares/Interviews/task-manager-clean-architecture/backend/TaskManager.Infrastructure/obj/Debug/net8.0/TaskMana.DD0CDC6B.Up2Date
+/Users/rmoreno/Code/Seglares/Interviews/task-manager-clean-architecture/backend/TaskManager.Infrastructure/obj/Debug/net8.0/TaskManager.Infrastructure.dll
+/Users/rmoreno/Code/Seglares/Interviews/task-manager-clean-architecture/backend/TaskManager.Infrastructure/obj/Debug/net8.0/refint/TaskManager.Infrastructure.dll
+/Users/rmoreno/Code/Seglares/Interviews/task-manager-clean-architecture/backend/TaskManager.Infrastructure/obj/Debug/net8.0/TaskManager.Infrastructure.pdb
+/Users/rmoreno/Code/Seglares/Interviews/task-manager-clean-architecture/backend/TaskManager.Infrastructure/obj/Debug/net8.0/ref/TaskManager.Infrastructure.dll

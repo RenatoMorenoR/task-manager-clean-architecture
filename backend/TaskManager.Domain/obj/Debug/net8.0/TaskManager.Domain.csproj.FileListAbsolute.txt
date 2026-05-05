@@ -1,0 +1,11 @@
+/Users/rmoreno/Code/Seglares/Interviews/task-manager-clean-architecture/backend/TaskManager.Domain/bin/Debug/net8.0/TaskManager.Domain.deps.json
+/Users/rmoreno/Code/Seglares/Interviews/task-manager-clean-architecture/backend/TaskManager.Domain/bin/Debug/net8.0/TaskManager.Domain.dll
+/Users/rmoreno/Code/Seglares/Interviews/task-manager-clean-architecture/backend/TaskManager.Domain/bin/Debug/net8.0/TaskManager.Domain.pdb
+/Users/rmoreno/Code/Seglares/Interviews/task-manager-clean-architecture/backend/TaskManager.Domain/obj/Debug/net8.0/TaskManager.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/Users/rmoreno/Code/Seglares/Interviews/task-manager-clean-architecture/backend/TaskManager.Domain/obj/Debug/net8.0/TaskManager.Domain.AssemblyInfoInputs.cache
+/Users/rmoreno/Code/Seglares/Interviews/task-manager-clean-architecture/backend/TaskManager.Domain/obj/Debug/net8.0/TaskManager.Domain.AssemblyInfo.cs
+/Users/rmoreno/Code/Seglares/Interviews/task-manager-clean-architecture/backend/TaskManager.Domain/obj/Debug/net8.0/TaskManager.Domain.csproj.CoreCompileInputs.cache
+/Users/rmoreno/Code/Seglares/Interviews/task-manager-clean-architecture/backend/TaskManager.Domain/obj/Debug/net8.0/TaskManager.Domain.dll
+/Users/rmoreno/Code/Seglares/Interviews/task-manager-clean-architecture/backend/TaskManager.Domain/obj/Debug/net8.0/refint/TaskManager.Domain.dll
+/Users/rmoreno/Code/Seglares/Interviews/task-manager-clean-architecture/backend/TaskManager.Domain/obj/Debug/net8.0/TaskManager.Domain.pdb
+/Users/rmoreno/Code/Seglares/Interviews/task-manager-clean-architecture/backend/TaskManager.Domain/obj/Debug/net8.0/ref/TaskManager.Domain.dll

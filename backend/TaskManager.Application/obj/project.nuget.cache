@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "xlI1wOsbToM=",
+  "success": true,
+  "projectFilePath": "/Users/rmoreno/Code/Seglares/Interviews/task-manager-clean-architecture/backend/TaskManager.Application/TaskManager.Application.csproj",
+  "expectedPackageFiles": [
+    "/Users/rmoreno/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/10.0.7/microsoft.extensions.dependencyinjection.abstractions.10.0.7.nupkg.sha512"
+  ],
+  "logs": []
+}

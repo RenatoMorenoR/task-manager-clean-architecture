@@ -1,0 +1,43 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: taskmanager-db
+    environment:
+      POSTGRES_DB: taskmanager_db
+      POSTGRES_USER: taskmanager
+      POSTGRES_PASSWORD: taskmanager_pass
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./scripts:/docker-entrypoint-initdb.d
+
+  api:
+    build:
+      context: ./backend
+      dockerfile: TaskManager.API/Dockerfile
+    container_name: taskmanager-api
+    ports:
+      - "5000:5000"
+    environment:
+      - ConnectionStrings__Postgres=Host=db;Port=5432;Database=taskmanager_db;Username=taskmanager;Password=taskmanager_pass
+      - Jwt__Secret=super-secret-key-at-least-32-characters-long
+      - Jwt__Issuer=TaskManagerAPI
+      - Jwt__Audience=TaskManagerClient
+      - SWAGGER_ENABLED=true
+    depends_on:
+      - db
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        - VITE_API_URL=http://localhost:5000
+    container_name: taskmanager-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - api
+
+volumes:
+  postgres_data:

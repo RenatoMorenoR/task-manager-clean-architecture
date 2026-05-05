@@ -1,0 +1,10 @@
+global using Moq;
+global using FluentAssertions;
+global using Xunit;
+global using TaskManager.Domain.Entities;
+global using TaskManager.Domain.Interfaces;
+global using TaskManager.Domain.Enums;
+global using TaskManager.Domain.Exceptions;
+global using TaskManager.Application.Interfaces;
+global using TaskManager.Application.DTOs.Auth;
+global using TaskManager.Application.DTOs.Tasks;
