@@ -71,8 +71,8 @@ This repository contains comprehensive documentation detailing the project requi
 > **Only requirement: [Docker Desktop](https://www.docker.com/products/docker-desktop/)**
 
 ```bash
-git clone <repository-url>
-cd taskmanager
+git clone git@github.com:RenatoMorenoR/task-manager-clean-architecture.git
+cd task-manager-clean-architecture
 
 # Start all services (API + Frontend + PostgreSQL)
 make up
@@ -148,8 +148,14 @@ taskmanager/
 │   ├── PRD-TaskManager.md                # Product Requirements Document
 │   └── genai-workflow.md                 # GenAI prompts and validation notes
 │
+├── .claude/agents/
+│   ├── architect.md                      # Architecture agent context
+│   ├── developer.md                      # Developer agent context
+│   └── qa.md                             # QA / TDD agent context
+│
 ├── docker-compose.yml                    # Production orchestration
 ├── docker-compose.override.yml           # Development overrides (hot reload)
+├── CLAUDE.md                             # Project intelligence hub
 ├── Makefile                              # Developer convenience commands
 └── README.md
 ```
