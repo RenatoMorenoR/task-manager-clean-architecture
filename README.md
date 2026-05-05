@@ -144,18 +144,12 @@ taskmanager/
 │   └── 002_seed.sql                      # Demo user + sample tasks
 │
 ├── docs/
-│   ├── ARD-TaskManager.docx              # Architecture Decision Records
-│   ├── PRD-TaskManager.docx              # Product Requirements Document
+│   ├── ARD-TaskManager.md                # Architecture Decision Records
+│   ├── PRD-TaskManager.md                # Product Requirements Document
 │   └── genai-workflow.md                 # GenAI prompts and validation notes
-│
-├── .claude/agents/
-│   ├── architect.md                      # Architecture agent context
-│   ├── developer.md                      # Developer agent context
-│   └── qa.md                             # QA / TDD agent context
 │
 ├── docker-compose.yml                    # Production orchestration
 ├── docker-compose.override.yml           # Development overrides (hot reload)
-├── CLAUDE.md                             # Project intelligence hub
 ├── Makefile                              # Developer convenience commands
 └── README.md
 ```
