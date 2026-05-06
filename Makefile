@@ -8,14 +8,14 @@
 up: ## Start all services (production mode)
 	docker compose -f docker-compose.yml up -d
 	@echo "✅ Services started"
-	@echo "   API:      http://localhost:5000"
-	@echo "   Swagger:  http://localhost:5000/swagger"
+	@echo "   API:      http://localhost:5001"
+	@echo "   Swagger:  http://localhost:5001/swagger"
 	@echo "   Frontend: http://localhost:3000"
 
 dev: ## Start all services (development mode with hot reload)
 	docker compose up -d
 	@echo "✅ Dev services started"
-	@echo "   API (hot reload): http://localhost:5000"
+	@echo "   API (hot reload): http://localhost:5001"
 	@echo "   Frontend (HMR):   http://localhost:3000"
 
 down: ## Stop all services
@@ -38,20 +38,20 @@ logs-db: ## Tail DB logs only
 
 # ─── Database ─────────────────────────────
 db-reset: ## Drop and recreate database with fresh seed data
-	docker compose exec postgres psql -U taskmanager -d taskmanager_db \
+	docker compose exec db psql -U taskmanager -d taskmanager_db \
 		-c "DROP TABLE IF EXISTS tasks CASCADE; DROP TABLE IF EXISTS users CASCADE;"
-	docker compose exec postgres psql -U taskmanager -d taskmanager_db \
-		-f /docker-entrypoint-initdb.d/01_schema.sql
-	docker compose exec postgres psql -U taskmanager -d taskmanager_db \
-		-f /docker-entrypoint-initdb.d/02_seed.sql
+	docker compose exec db psql -U taskmanager -d taskmanager_db \
+		-f /docker-entrypoint-initdb.d/001_schema.sql
+	docker compose exec db psql -U taskmanager -d taskmanager_db \
+		-f /docker-entrypoint-initdb.d/002_seed.sql
 	@echo "✅ Database reset complete"
 
 db-shell: ## Open psql shell
-	docker compose exec postgres psql -U taskmanager -d taskmanager_db
+	docker compose exec db psql -U taskmanager -d taskmanager_db
 
 db-backup: ## Backup database to ./backups/
 	mkdir -p backups
-	docker compose exec postgres pg_dump -U taskmanager taskmanager_db \
+	docker compose exec db pg_dump -U taskmanager taskmanager_db \
 		> backups/backup_$(shell date +%Y%m%d_%H%M%S).sql
 	@echo "✅ Backup created in ./backups/"
 

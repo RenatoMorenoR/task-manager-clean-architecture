@@ -9,7 +9,7 @@ namespace TaskManager.Infrastructure.Services;
 
 public class JwtTokenService(IConfiguration configuration) : IJwtTokenService
 {
-    public string GenerateToken(Guid userId, string email, string name)
+    public (string Token, DateTime ExpiresAt) GenerateToken(Guid userId, string email, string name)
     {
         var secretKey = configuration["Jwt:Secret"] ?? throw new InvalidOperationException("JWT Secret not configured.");
         var issuer = configuration["Jwt:Issuer"] ?? "TaskManagerAPI";
@@ -18,6 +18,7 @@ public class JwtTokenService(IConfiguration configuration) : IJwtTokenService
 
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey));
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+        var expiresAt = DateTime.UtcNow.AddHours(expirationHours);
 
         var claims = new[]
         {
@@ -31,10 +32,10 @@ public class JwtTokenService(IConfiguration configuration) : IJwtTokenService
             issuer: issuer,
             audience: audience,
             claims: claims,
-            expires: DateTime.UtcNow.AddHours(expirationHours),
+            expires: expiresAt,
             signingCredentials: creds
         );
 
-        return new JwtSecurityTokenHandler().WriteToken(token);
+        return (new JwtSecurityTokenHandler().WriteToken(token), expiresAt);
     }
 }

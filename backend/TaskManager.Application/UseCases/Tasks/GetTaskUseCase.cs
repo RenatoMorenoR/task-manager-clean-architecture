@@ -3,30 +3,22 @@ using TaskManager.Application.Interfaces;
 using TaskManager.Application.Interfaces.UseCases;
 using TaskManager.Domain.Exceptions;
 using TaskManager.Domain.Interfaces;
+using TaskManager.Domain.Entities;
 
 namespace TaskManager.Application.UseCases.Tasks;
 
-public class UpdateTaskUseCase(
+public class GetTaskUseCase(
     ITaskRepository taskRepository,
-    ICurrentUserService currentUserService) : IUpdateTaskUseCase
+    ICurrentUserService currentUserService) : IGetTaskUseCase
 {
-    public async Task<TaskDto> ExecuteAsync(Guid taskId, UpdateTaskRequest request, CancellationToken ct = default)
+    public async Task<TaskDto> ExecuteAsync(Guid id, CancellationToken ct = default)
     {
         var userId = currentUserService.UserId ?? throw new AuthenticationException("User not authenticated.");
 
-        var task = await taskRepository.GetByIdAsync(taskId, ct) 
-            ?? throw new NotFoundException("Task", taskId);
+        var task = await taskRepository.GetByIdAsync(id, ct)
+            ?? throw new NotFoundException("TaskItem", id);
 
         task.EnsureOwnedBy(userId);
-
-        task.Update(
-            request.Title,
-            request.Description,
-            request.Status,
-            request.DueDate
-        );
-
-        await taskRepository.UpdateAsync(task, ct);
 
         return new TaskDto(
             task.Id,

@@ -454,3 +454,4 @@
 /Users/rmoreno/Code/Seglares/Interviews/task-manager-clean-architecture/backend/TaskManager.Tests/bin/Debug/net8.0/Microsoft.Extensions.Primitives.dll
 /Users/rmoreno/Code/Seglares/Interviews/task-manager-clean-architecture/backend/TaskManager.Tests/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.dll
 /Users/rmoreno/Code/Seglares/Interviews/task-manager-clean-architecture/backend/TaskManager.Tests/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/Users/rmoreno/Code/Seglares/Interviews/task-manager-clean-architecture/backend/TaskManager.Tests/obj/Debug/net8.0/TaskManager.Tests.sourcelink.json

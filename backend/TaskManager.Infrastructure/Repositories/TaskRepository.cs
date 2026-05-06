@@ -65,10 +65,11 @@ public class TaskRepository(NpgsqlDataSource dataSource) : ITaskRepository
                 status = @status, 
                 due_date = @dueDate, 
                 updated_at = @updatedAt
-            WHERE id = @id";
+            WHERE id = @id AND user_id = @userId";
 
         using var cmd = dataSource.CreateCommand(sql);
         cmd.Parameters.AddWithValue("id", task.Id);
+        cmd.Parameters.AddWithValue("userId", task.UserId);
         cmd.Parameters.AddWithValue("title", task.Title);
         cmd.Parameters.AddWithValue("description", task.Description);
         cmd.Parameters.AddWithValue("status", (short)task.Status);

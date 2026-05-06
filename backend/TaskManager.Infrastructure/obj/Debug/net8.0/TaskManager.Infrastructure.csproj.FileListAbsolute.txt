@@ -15,3 +15,4 @@
 /Users/rmoreno/Code/Seglares/Interviews/task-manager-clean-architecture/backend/TaskManager.Infrastructure/obj/Debug/net8.0/refint/TaskManager.Infrastructure.dll
 /Users/rmoreno/Code/Seglares/Interviews/task-manager-clean-architecture/backend/TaskManager.Infrastructure/obj/Debug/net8.0/TaskManager.Infrastructure.pdb
 /Users/rmoreno/Code/Seglares/Interviews/task-manager-clean-architecture/backend/TaskManager.Infrastructure/obj/Debug/net8.0/ref/TaskManager.Infrastructure.dll
+/Users/rmoreno/Code/Seglares/Interviews/task-manager-clean-architecture/backend/TaskManager.Infrastructure/obj/Debug/net8.0/TaskManager.Infrastructure.sourcelink.json

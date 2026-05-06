@@ -18,7 +18,7 @@ services:
       dockerfile: TaskManager.API/Dockerfile
     container_name: taskmanager-api
     ports:
-      - "5000:5000"
+      - "5001:5000"
     environment:
       - ConnectionStrings__Postgres=Host=db;Port=5432;Database=taskmanager_db;Username=taskmanager;Password=taskmanager_pass
       - Jwt__Secret=super-secret-key-at-least-32-characters-long
@@ -32,7 +32,7 @@ services:
     build:
       context: ./frontend
       args:
-        - VITE_API_URL=http://localhost:5000
+        - VITE_API_URL=http://localhost:5001
     container_name: taskmanager-frontend
     ports:
       - "3000:80"

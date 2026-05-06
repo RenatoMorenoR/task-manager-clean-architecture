@@ -25,7 +25,7 @@ public class GetTasksUseCase(
         task.UserId,
         task.Title,
         task.Description,
-        task.Status.ToString(),
+        task.Status,
         task.DueDate,
         task.CreatedAt,
         task.UpdatedAt

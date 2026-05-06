@@ -20,7 +20,7 @@ public record TaskDto(
     Guid UserId,
     string Title,
     string Description,
-    string Status,
+    TaskItemStatus Status,
     DateTime DueDate,
     DateTime CreatedAt,
     DateTime UpdatedAt

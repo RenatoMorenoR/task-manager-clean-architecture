@@ -11,6 +11,7 @@ namespace TaskManager.API.Controllers;
 public class TasksController(
     ICreateTaskUseCase createUseCase,
     IGetTasksUseCase getTasksUseCase,
+    IGetTaskUseCase getTaskUseCase,
     IUpdateTaskUseCase updateUseCase,
     IDeleteTaskUseCase deleteUseCase) : ControllerBase
 {
@@ -20,6 +21,16 @@ public class TasksController(
     {
         var tasks = await getTasksUseCase.ExecuteAsync(ct);
         return Ok(tasks);
+    }
+
+    [HttpGet("{id:guid}")]
+    [ProducesResponseType(typeof(TaskDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status403Forbidden)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> GetById(Guid id, CancellationToken ct)
+    {
+        var task = await getTaskUseCase.ExecuteAsync(id, ct);
+        return Ok(task);
     }
 
     [HttpPost]

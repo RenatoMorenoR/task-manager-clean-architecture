@@ -1,12 +1,12 @@
 -- Seed data for demo user and initial tasks
 -- Password hash for 'Demo1234!' using BCrypt (cost factor 12)
--- Hash: $2a$12$R9h/lIPzHZ7.3m6tN.7mGehA1v4o7mN2Y3q6yN.7mGehA1v4o7mN2
+-- Hash: $2a$12$yhvI8MzvwrNxg.T/GNI/keOoy6gX7E/wJHE4qIXXMIWDoRZUXLXwi
 
 INSERT INTO users (id, email, password_hash, name)
 VALUES (
     'a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11', 
     'demo@taskmanager.com', 
-    '$2a$12$R9h/lIPzHZ7.3m6tN.7mGehA1v4o7mN2Y3q6yN.7mGehA1v4o7mN2', 
+    '$2a$12$yhvI8MzvwrNxg.T/GNI/keOoy6gX7E/wJHE4qIXXMIWDoRZUXLXwi', 
     'Demo User'
 ) ON CONFLICT (email) DO NOTHING;
 

@@ -16,6 +16,7 @@ public static class ApplicationExtensions
         // Task Use Cases
         services.AddScoped<ICreateTaskUseCase, CreateTaskUseCase>();
         services.AddScoped<IGetTasksUseCase, GetTasksUseCase>();
+        services.AddScoped<IGetTaskUseCase, GetTaskUseCase>();
         services.AddScoped<IUpdateTaskUseCase, UpdateTaskUseCase>();
         services.AddScoped<IDeleteTaskUseCase, DeleteTaskUseCase>();
 

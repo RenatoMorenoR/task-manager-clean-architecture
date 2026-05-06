@@ -18,6 +18,9 @@ public class User
         if (string.IsNullOrWhiteSpace(email))
             throw new DomainValidationException("Email is required.");
         
+        if (!System.Text.RegularExpressions.Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
+            throw new DomainValidationException("Invalid email format.");
+        
         if (string.IsNullOrWhiteSpace(passwordHash))
             throw new DomainValidationException("Password hash is required.");
 

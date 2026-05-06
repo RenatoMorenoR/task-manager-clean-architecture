@@ -84,8 +84,8 @@ docker compose -f docker-compose.yml up -d
 | Service    | URL                           |
 |------------|-------------------------------|
 | Frontend   | <http://localhost:3000>         |
-| API        | <http://localhost:5000>         |
-| Swagger UI | <http://localhost:5000/swagger> |
+| API        | <http://localhost:5001>         |
+| Swagger UI | <http://localhost:5001/swagger> |
 | PostgreSQL | localhost:5432                |
 
 **Demo account:** `demo@taskmanager.com` / `Demo1234!`

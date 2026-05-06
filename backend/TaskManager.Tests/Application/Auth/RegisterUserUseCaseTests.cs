@@ -39,7 +39,7 @@ public class RegisterUserUseCaseTests
             .ReturnsAsync((User u, CancellationToken _) => u);
 
         _jwtTokenServiceMock.Setup(x => x.GenerateToken(It.IsAny<Guid>(), It.IsAny<string>(), It.IsAny<string>()))
-            .Returns(token);
+            .Returns((token, DateTime.UtcNow.AddHours(24)));
 
         // Act
         var response = await _useCase.ExecuteAsync(request);

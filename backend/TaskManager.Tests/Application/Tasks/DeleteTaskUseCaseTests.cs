@@ -1,42 +1,47 @@
+using FluentAssertions;
+using Moq;
 using TaskManager.Application.UseCases.Tasks;
+using TaskManager.Domain.Entities;
+using TaskManager.Domain.Enums;
+using TaskManager.Domain.Exceptions;
+using TaskManager.Domain.Interfaces;
+using TaskManager.Application.Interfaces;
+using Xunit;
 
 namespace TaskManager.Tests.Application.Tasks;
 
-public class UpdateTaskUseCaseTests
+public class DeleteTaskUseCaseTests
 {
     private readonly Mock<ITaskRepository> _taskRepositoryMock;
     private readonly Mock<ICurrentUserService> _currentUserServiceMock;
-    private readonly UpdateTaskUseCase _useCase;
+    private readonly DeleteTaskUseCase _useCase;
 
-    public UpdateTaskUseCaseTests()
+    public DeleteTaskUseCaseTests()
     {
         _taskRepositoryMock = new Mock<ITaskRepository>();
         _currentUserServiceMock = new Mock<ICurrentUserService>();
-        _useCase = new UpdateTaskUseCase(
+        _useCase = new DeleteTaskUseCase(
             _taskRepositoryMock.Object,
             _currentUserServiceMock.Object
         );
     }
 
     [Fact]
-    public async Task ExecuteAsync_WithValidOwnership_ShouldUpdateTask()
+    public async Task ExecuteAsync_WithValidOwnership_ShouldDeleteTask()
     {
         // Arrange
         var userId = Guid.NewGuid();
         var taskId = Guid.NewGuid();
-        var task = TaskItem.Reconstruct(taskId, userId, "Old Title", "", TaskItemStatus.Pending, DateTime.UtcNow, DateTime.UtcNow, DateTime.UtcNow);
-        var request = new UpdateTaskRequest("New Title", "New Desc", TaskItemStatus.InProgress, DateTime.UtcNow.AddDays(1));
+        var task = TaskItem.Reconstruct(taskId, userId, "Title", "", TaskItemStatus.Pending, DateTime.UtcNow, DateTime.UtcNow, DateTime.UtcNow);
 
         _currentUserServiceMock.Setup(x => x.UserId).Returns(userId);
         _taskRepositoryMock.Setup(x => x.GetByIdAsync(taskId, It.IsAny<CancellationToken>())).ReturnsAsync(task);
 
         // Act
-        var result = await _useCase.ExecuteAsync(taskId, request);
+        await _useCase.ExecuteAsync(taskId);
 
         // Assert
-        result.Title.Should().Be(request.Title);
-        result.Status.Should().Be(TaskItemStatus.InProgress);
-        _taskRepositoryMock.Verify(x => x.UpdateAsync(task, It.IsAny<CancellationToken>()), Times.Once);
+        _taskRepositoryMock.Verify(x => x.DeleteAsync(taskId, It.IsAny<CancellationToken>()), Times.Once);
     }
 
     [Fact]
@@ -47,13 +52,12 @@ public class UpdateTaskUseCaseTests
         var otherUserId = Guid.NewGuid();
         var taskId = Guid.NewGuid();
         var task = TaskItem.Reconstruct(taskId, otherUserId, "Title", "", TaskItemStatus.Pending, DateTime.UtcNow, DateTime.UtcNow, DateTime.UtcNow);
-        var request = new UpdateTaskRequest("New Title", "New Desc", TaskItemStatus.InProgress, DateTime.UtcNow.AddDays(1));
 
         _currentUserServiceMock.Setup(x => x.UserId).Returns(userId);
         _taskRepositoryMock.Setup(x => x.GetByIdAsync(taskId, It.IsAny<CancellationToken>())).ReturnsAsync(task);
 
         // Act
-        var act = () => _useCase.ExecuteAsync(taskId, request);
+        var act = () => _useCase.ExecuteAsync(taskId);
 
         // Assert
         await act.Should().ThrowAsync<UnauthorizedTaskAccessException>();

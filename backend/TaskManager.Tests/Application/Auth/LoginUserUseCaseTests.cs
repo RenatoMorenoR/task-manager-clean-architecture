@@ -36,7 +36,7 @@ public class LoginUserUseCaseTests
             .Returns(true);
 
         _jwtTokenServiceMock.Setup(x => x.GenerateToken(user.Id, user.Email, user.Name))
-            .Returns(token);
+            .Returns((token, DateTime.UtcNow.AddHours(24)));
 
         // Act
         var response = await _useCase.ExecuteAsync(request);

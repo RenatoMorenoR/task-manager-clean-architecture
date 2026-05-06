@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import type { Task, CreateTaskRequest, UpdateTaskRequest } from '../types';
 import { useApi } from '../context/ApiContext';
 import TaskForm from '../components/tasks/TaskForm';
@@ -12,43 +12,48 @@ const TasksPage: React.FC = () => {
   const [editingTask, setEditingTask] = useState<Task | undefined>();
   const [formLoading, setFormLoading] = useState(false);
 
-  useEffect(() => {
-    loadTasks();
-  }, []);
-
-  const loadTasks = async () => {
+  const loadTasks = useCallback(async () => {
     try {
       const data = await tasksApi.getAll();
       setTasks(data);
-    } catch (err) {
+    } catch (err: any) {
       console.error('Failed to load tasks', err);
+      alert('Failed to load tasks: ' + (err.message || 'Unknown error'));
     } finally {
       setLoading(false);
     }
-  };
+  }, [tasksApi]);
 
-  const handleCreate = async (data: any) => {
+  useEffect(() => {
+    loadTasks();
+  }, [loadTasks]);
+
+  const handleCreate = async (data: CreateTaskRequest) => {
     setFormLoading(true);
     try {
-      await tasksApi.create(data as CreateTaskRequest);
+      await tasksApi.create(data);
       await loadTasks();
       setIsFormOpen(false);
-    } catch (err) {
+    } catch (err: any) {
       console.error('Failed to create task', err);
+      alert('Failed to create task: ' + (err.message || 'Unknown error'));
     } finally {
       setFormLoading(false);
     }
   };
 
-  const handleUpdate = async (data: any) => {
+  const handleUpdate = async (data: UpdateTaskRequest & { id?: string }) => {
     setFormLoading(true);
     try {
-      await tasksApi.update(data.id, data as UpdateTaskRequest);
-      await loadTasks();
-      setIsFormOpen(false);
-      setEditingTask(undefined);
-    } catch (err) {
+      if (data.id) {
+        await tasksApi.update(data.id, data);
+        await loadTasks();
+        setIsFormOpen(false);
+        setEditingTask(undefined);
+      }
+    } catch (err: any) {
       console.error('Failed to update task', err);
+      alert('Failed to update task: ' + (err.message || 'Unknown error'));
     } finally {
       setFormLoading(false);
     }
@@ -59,8 +64,9 @@ const TasksPage: React.FC = () => {
     try {
       await tasksApi.delete(id);
       setTasks(tasks.filter(t => t.id !== id));
-    } catch (err) {
+    } catch (err: any) {
       console.error('Failed to delete task', err);
+      alert('Failed to delete task: ' + (err.message || 'Unknown error'));
     }
   };
 
@@ -141,7 +147,7 @@ const TasksPage: React.FC = () => {
         <TaskForm 
           task={editingTask} 
           onClose={() => setIsFormOpen(false)} 
-          onSubmit={editingTask ? handleUpdate : handleCreate}
+          onSubmit={(data: any) => editingTask ? handleUpdate(data) : handleCreate(data)}
           loading={formLoading}
         />
       )}

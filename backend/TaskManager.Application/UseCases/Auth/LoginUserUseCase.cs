@@ -20,13 +20,13 @@ public class LoginUserUseCase(
             throw new AuthenticationException("Invalid email or password.");
         }
 
-        var token = jwtTokenService.GenerateToken(user.Id, user.Email, user.Name);
+        var (token, expiresAt) = jwtTokenService.GenerateToken(user.Id, user.Email, user.Name);
 
         return new AuthResponse(
             token,
             user.Email,
             user.Name,
-            DateTime.UtcNow.AddHours(24)
+            expiresAt
         );
     }
 }

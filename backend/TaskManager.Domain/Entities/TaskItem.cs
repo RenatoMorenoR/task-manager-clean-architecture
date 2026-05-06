@@ -64,6 +64,9 @@ public class TaskItem
         if (string.IsNullOrWhiteSpace(title))
             throw new DomainValidationException("Title cannot be empty.");
 
+        if (dueDate.Date < DateTime.UtcNow.Date)
+            throw new DomainValidationException("Due date cannot be in the past.");
+
         if (title.Length > 500)
             throw new DomainValidationException("Title cannot exceed 500 characters.");
 

@@ -30,13 +30,13 @@ public class RegisterUserUseCase(
 
         await userRepository.AddAsync(user, ct);
 
-        var token = jwtTokenService.GenerateToken(user.Id, user.Email, user.Name);
+        var (token, expiresAt) = jwtTokenService.GenerateToken(user.Id, user.Email, user.Name);
 
         return new AuthResponse(
             token,
             user.Email,
             user.Name,
-            DateTime.UtcNow.AddHours(24) // Match token expiration
+            expiresAt
         );
     }
 }
