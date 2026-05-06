@@ -3,6 +3,7 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import LoginPage from '../pages/LoginPage';
 import { authApi } from '../api/auth';
+import { ApiProvider } from '../context/ApiContext';
 
 // Mock authApi
 vi.mock('../api/auth', () => ({
@@ -29,7 +30,9 @@ describe('LoginPage', () => {
   it('should render login form', () => {
     render(
       <BrowserRouter>
-        <LoginPage />
+        <ApiProvider>
+          <LoginPage />
+        </ApiProvider>
       </BrowserRouter>
     );
 
@@ -44,7 +47,9 @@ describe('LoginPage', () => {
 
     render(
       <BrowserRouter>
-        <LoginPage />
+        <ApiProvider>
+          <LoginPage />
+        </ApiProvider>
       </BrowserRouter>
     );
 
@@ -65,7 +70,9 @@ describe('LoginPage', () => {
 
     render(
       <BrowserRouter>
-        <LoginPage />
+        <ApiProvider>
+          <LoginPage />
+        </ApiProvider>
       </BrowserRouter>
     );
 
